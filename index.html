@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- 라이브러리 -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+    <link href="https://db.onlinewebfonts.com/c/dc1d00ae3d4ee0d77e0595eadbfb4463?family=Tamburins+Original+Regular" rel="stylesheet">
+    <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="js/jquery.simplyscroll.min.js"></script>
+    <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+    <script src="js/scrolla.jquery.min.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script src="js/splitting.min.js"></script>
+    <script src="js/script.js" defer></script>
+
+</head>
+<body>
+    <!-- Header -->
+    <header id="mainHeader" class="header">
+        <nav>
+            <ul class="nav-list">
+                <li><a href="#hero">About</a></li>
+                <li><a href="#profile">Profile</a></li>
+                <li><a href="#Projects">Projects</a></li>
+                <li><a href="#works">Works</a></li>
+                <li><a href="#process">Process</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="wrap">
+    <!-- Intro -->
+    <!-- <section class="intro">
+        <div class="intro-inner">
+            <div class="logo">Yooniverse</div>
+            <div class="group-container">
+  <div class="group">
+    <img class="card" src="img/복숭아.png">
+    <img class="card" src="img/전시.jpg">
+    <img class="card" src="img/카페알바.jpg">
+    <img class="card" src="img/우무.jpg">
+    <img class="card" src="img/어항.jpg">
+    <img class="card" src="img/바다카페.jpg">
+  </div>
+  <div class="group">
+    <img class="card" src="img/복숭아.png">
+    <img class="card" src="img/전시.jpg">
+    <img class="card" src="img/카페알바.jpg">
+    <img class="card" src="img/우무.jpg">
+    <img class="card" src="img/어항.jpg">
+    <img class="card" src="img/바다카페.jpg">
+  </div>
+    <div class="group">
+    <img class="card" src="img/복숭아.png">
+    <img class="card" src="img/전시.jpg">
+    <img class="card" src="img/카페알바.jpg">
+    <img class="card" src="img/우무.jpg">
+    <img class="card" src="img/어항.jpg">
+    <img class="card" src="img/바다카페.jpg">
+  </div>
+  <div class="group">
+    <img class="card" src="img/복숭아.png">
+    <img class="card" src="img/전시.jpg">
+    <img class="card" src="img/카페알바.jpg">
+    <img class="card" src="img/우무.jpg">
+    <img class="card" src="img/어항.jpg">
+    <img class="card" src="img/바다카페.jpg">
+  </div>
+    <div class="group">
+    <img class="card" src="img/복숭아.png">
+    <img class="card" src="img/전시.jpg">
+    <img class="card" src="img/카페알바.jpg">
+    <img class="card" src="img/우무.jpg">
+    <img class="card" src="img/어항.jpg">
+    <img class="card" src="img/바다카페.jpg">
+  </div>
+</div>
+</div>
+    </section> -->
+
+    <!-- Hero Section -->
+<section id="hero" class="hero">
+    <div class="hero-inner">
+    <!-- 불규칙 배경 이미지 -->
+    <div class="hero-bg" aria-hidden="true">
+        <div class="bg-item" style="top:30%; left:0%;">
+            <img src="img/브런치.jpg" alt="">
+        </div>
+        <div class="bg-item" style="top:0%; right:20%;">
+            <img src="img/실타래.jpg" alt="">
+        </div>
+        <div class="bg-item" style="top:10%; right:0%;">
+            <img src="img/천안카페.jpg" alt="">
+        </div>
+        <div class="bg-item" style="bottom:0%; left:17%;">
+            <img src="img/사진전시.jpg" alt="">
+        </div>
+        <div class="bg-item" style="top:-3%; left:17%;">
+            <img src="img/어항.jpg" alt="">
+        </div>
+                <div class="bg-item" style="bottom:3%; right:10%;">
+            <img src="img/빨강지붕.jpg" alt="">
+        </div>
+    </div>
+
+    <!-- 중앙 텍스트 -->
+    <div class="hero-content">
+        <div class="hero-content1"> 
+            <h2 class="logo-text">Welcome to the Yooniverse</h2>
+            <p class="explanation-text">‘Yooniverse’는 ‘혜윤’과 ‘Universe’를 합친 말로, 나만의 디자인 세계를 뜻합니다.</p>
+        </div>
+        <div class="hero-content2"> 
+            <h2 class="logo-text">Designing my universe,<br>one pixel at a time</h2> 
+            <p class="explanation-text">창의성을 담아 나만의 세계를 만들어갑니다.</p> 
+        </div>
+    </div>
+
+</section>
+
+    <!-- Profile -->
+    <section id="profile" class="profile">
+        <div class="profile-inner">
+            <div class="profile-wrapper">
+                <img src="img/profile.jpg" alt="Profile Image" class="profile-img">
+                <a href="#" class="label-name1">정혜윤</a>
+                <a href="#" class="label-name2">Jung Hye Yoon</a>
+                <a href="#" class="label-name3">▪▫▪▫▪</a>
+                <a href="#" link="resume" class="label-resume">resume</a>
+            </div>
+            <div class="profile-info">
+                <h3 class="en2">My Profile</h3>
+                <div class="profile-content">
+                <div class="introduce">
+                    <h2 class="tit">Familiar yet Fresh,<br>Simple yet Meaningful.</h2>
+                    <p class="ko">단순하지만 의미있고, 친숙하지만 신선한 경험을 주는 디자이너</p>
+                    <p class="en">Everyday moments like these sparked my interest in user experience.I'm learning to design with structure, empathy, and user-centered thinking. I want to create experiences that feel familiar yet fresh, simple yet meaningful.</p>
+                </div>
+                <div class="detail">
+                    <ul>
+                        <li>
+                            <h3 class="profile-tit">Information</h3>
+                            <p><span>Email</span>hwn01@naver.com</p>
+                            <p><span>Phone</span>010.3845.1801</p>
+                            <p><span>Birth</span>2001.02.05</p>
+                        </li>
+                        <li>
+                            <h3 class="profile-tit">Education</h3>
+                            <p><span>2025.02~2025.08</span>이젠아카데미 uiux부트캠프</p>
+                            <p><span>2020.02~2024.08</span>단국대학교 공공정책학과</p>
+                            <p><span>2017.02~2020.02</span>경복여자고등학교</p>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <h3 class="profile-tit">Experience</h3>
+                            <p><span>2024.04~</span>CJ 올리브영 메이트</p>
+                            <p><span>2022.08~2023.09</span>팡오뉴 베이커리 카페 아르바이트</p>
+                        </li>
+                        <li>
+                            <h3 class="profile-tit">Certificate</h3>
+                            <p><span>2025.10</span>웹디자인기능사</p>
+                            <p><span>2022.08</span>자동차 운전면허 2급 보통</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="interest">
+        <div class="interest-inner">
+            <div class="left">
+                <h1>
+                    My Interests<br><span class="en2">&</span> hobby</h1>
+                <p>
+                    These are my interests.
+                    <br>My hobbies expand my creativity and perspective,<br>inspiring fresh ideas in my UI/UX design work.
+                    <br>They form the foundation for empathetic, user-centered designs.
+                </p>
+            </div>
+            <div class="right">
+                <div class="img-wrapper">
+                    <img src="img/우무.jpg" class="interest1" alt="">
+                    <img src="img/신발가게.jpg" class="interest2" alt="">
+                    <img src="img/이젠.jpg" class="interest3" alt="">
+                    <img src="img/필라테스.jpg" class="interest4" alt="">
+                    <img src="img/요트.jpg" class="interest5" alt="">
+                    <img src="img/강아지.jpg" class="interest6" alt="">
+                    <div class="searchbar"><p>Click !</p></div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- skill -->
+    <section class="skill">
+        <div class="skill-inner">
+            <p>Creatives from skills</p>
+            <ul class="icon">
+                <li><img src="img/icon-ai.png" alt=""></li>
+                <li><img src="img/icon-figma.png" alt=""></li>
+                <li><img src="img/icon-html.png" alt=""></li>
+                <li><img src="img/icon-css.png" alt=""></li>
+                <li><img src="img/icon-js.png" alt=""></li>
+                <li><img src="img/icon-gsap.png" alt=""></li>
+                <li><img src="img/icon-jQuery.png" alt=""></li>
+                <li><img src="img/icon-react.png" alt=""></li>
+            </ul>
+        </div>
+    </section>
+
+
+
+<!-- Team Projects -->
+<section class="about" id="Projects">
+  <div class="about-main">
+    <p class="mainbg"><img src="img/work4.jpg" alt=""></p>
+    <div class="txtBox animate" data-animate='motion'>
+      <h2 class="title en2">Team Project</h2>
+      <p class="english en" data-splitting>
+        From February to August 2025, I completed the UI/UX course at Izen Academy,<br>
+        where I actively participated in multiple team projects applying the knowledge and skills I gained.<br>
+        I engaged in the full UI/UX process, including planning, research, design, and prototyping,<br>
+        which strengthened my user-centered problem-solving skills and ability to collaborate effectively.<br>
+        These experiences allowed me to acquire practical insights<br>
+        into real-world project workflows and design methodologies,<br>
+        enhancing my professional sensibility in the field.
+      </p>
+      <p class="korean">
+        2025년 2월부터 8월까지 이젠아카데미 UI/UX 과정을 수강하며, <br class="mo">배운 지식과 기술을 바탕으로 팀 프로젝트를 진행했습니다.
+        <br class="web">기획, 리서치, 디자인, 프로토타입 제작 등 <br class="mo">UI/UX 프로세스 전 과정을 직접 수행하며, 사용자 중심의 문제 해결 능력과 협업 역량을 키웠습니다.
+        <br class="web">이를 통해 실무에 가까운 프로젝트 진행 방식과 디자인 접근법을 익히고,<br class="mo">실무에 필요한 감각을 확장시킬 수 있었습니다.
+      </p>
+    </div>
+  </div>
+
+  <!-- teamproject 섹션 삽입 -->
+  <div class="teamproject">
+    <div class="container">
+      <!-- 사이드 메뉴 -->
+      <div class="sidebar">
+        <ul>
+          <li data-index="0" class="active">01 Project Overview</li>
+          <li data-index="1">02 My Role & Process</li>
+          <li data-index="2">03 Final Outcome</li>
+        </ul>
+        <button class="view-more">View More</button>
+      </div>
+
+      <!-- 콘텐츠 영역 -->
+      <div class="content">
+        <div class="content-inner">
+          <div class="content-box ">
+            <img src="img/탬버린즈.png" alt=" ">
+            <p>오프라인에서 경험하는 탬버린즈의 감성을 온라인에서도 구현하기 위한 웹 리뉴얼 프로젝트</p>
+          </div>
+
+          <div class="content-box">
+            <img src="img/탬버린즈.png" alt="리서치 자료">
+            <p>데스크 리서치와 벤치마킹을 통해 웹사이트 구조와 사용자 여정을 설계</p>
+          </div>
+
+          <div class="content-box">
+            <div class="before-after">
+              <img src="img/탬버린즈.png" alt="Before">
+              <img src="img/탬버린즈.png" alt="After">
+            </div>
+            <p>리뉴얼 후, 브랜드 감성을 온·오프라인에서 일관되게 경험 가능</p>
+          </div>
+          <div class="btn2">
+            <!-- 좌우 버튼 -->
+            <button class="nav-btn prev">&#10094;</button>
+            <button class="nav-btn next">&#10095;</button>
+          </div>
+        </div>
+      </div>
+    </div>        
+  </div>
+
+  <section class="about-second-wrap">
+    <div class="about-second">
+      <div class="txts">
+        <p class="txt1 en2"><span class="img1"><img src="img/aboutsecond1.png" alt=""></span> (My Journey)</p>
+        <p class="txt2 en2"><span class="text2">Design <br class="mo">and Code</span> <span class="img2"><img src="img/aboutsecond2.png" alt=""></span></p>
+        <p class="txt3 en2"><span class="text3">Creative</span> <span class="img3"><img src="img/aboutsecond3.png" alt=""> </span> <span class="text4">Growth</span></p>
+    </div>
+    </div>
+  </section>
+
+  <section class="about-third">
+    <div class="video-background">
+      <video src="img/KakaoTalk_20250620_164755534.mp4" autoplay muted loop playsinline></video>
+      <div class="texts">
+        <p class="kor">CSS, HTML, jQuery, JavaScript, GSAP 등 <br class="mo"> 다양한 디자인 코드를 학습했습니다.<br class="web"> 학습한 기술들을 직접 적용해 클론코딩을 만들어<br class="mo"> 다양한 웹 요소들을 구현해 보았습니다.<br class="web"> 이를 통해 디자인뿐만 아니라 기술적 구현 능력도 함께 발전시킬 수 있었습니다.</p> 
+        <p class="eng en">I have learned various design codes <br class="mo"> such as CSS, HTML, jQuery, JavaScript, and GSAP. <br class="web">I applied the skills I learned <br class="mo"> by creating clone coding projects to implement various web elements. <br class="web"> Through this, I was able to develop not only my design skills  <br class="mo">but also my technical implementation abilities.</p>
+      </div>
+    </div>
+  </section>
+
+
+
+
+    <!-- Works -->
+    <section id="works" class="works">
+        <div class="title en">
+            <p class="a">My</p>
+            <p class="b en2">Work</p>
+        </div>
+        <ul class="worklist">
+            <li>
+                <a href="#">
+                    <div class="imgBox">
+                        <img src="img/work1.jpg" alt="">
+                    </div>
+                    <div class="textBox">
+                        <h3>DaeBang</h3>
+                        <div class="info"></div>
+                        <div class="info">
+                            <p>UI/UX Design, web Publising</p>
+                            <p>Html, Css, Java</p>
+                        </div>
+                    </div>
+                    </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="imgBox">
+                            <img src="img/work2.jpg" alt="">
+                    </div>
+                    <div class="textBox">
+                        <h3>Hanwha Chemical</h3>
+                        <div class="info"></div>
+                        <div class="info">
+                            <p>UI/UX Design, web Publising</p>
+                            <p>2025</p>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="imgBox">
+                        <img src="img/work3.jpg" alt="">
+                    </div>
+                    <div class="textBox">
+                            <h3>Crew a la mode</h3>
+                            <div class="info"></div>
+                            <div class="info">
+                                <p>UI/UX Design, web Publising</p>
+                                <p>2025</p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="imgBox">
+                            <img src="img/work4.jpg" alt="">
+                        </div>
+                        <div class="textBox">
+                            <h3>DopDa</h3>
+                            <div class="info"></div>
+                            <div class="info">
+                                <p>UI/UX Design, web Publising</p>
+                                <p>2025</p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="imgBox">
+                            <img src="img/work5.jpg" alt="">
+                        </div>
+                        <div class="textBox">
+                            <h3>Musign</h3>
+                            <div class="info"></div>
+                            <div class="info">
+                                <p>UI/UX Design, web Publising</p>
+                                <p>2025</p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="imgBox">
+                            <img src="img/work6.jpg" alt="">
+                        </div>
+                        <div class="textBox">
+                            <h3>Y-Studio</h3>
+                            <div class="info"></div>
+                            <div class="info">
+                                <p>UI/UX Design, web Publising</p>
+                                <p>2025</p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="imgBox">
+                            <img src="img/work7.png" alt="">
+                        </div>
+                        <div class="textBox">
+                            <h3>Daehye</h3>
+                            <div class="info"></div>
+                            <div class="info">
+                                <p>UI/UX Design, web Publising</p>
+                                <p>2025</p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="imgBox">
+                            <img src="img/work8.png" alt="">
+                        </div>
+                        <div class="textBox">
+                            <h3>Northen</h3>
+                            <div class="info"></div>
+                            <div class="info">
+                                <p>UI/UX Design, web Publising</p>
+                                <p>2025</p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+    </section>
+
+<section class="about-more">
+    <div class="txtBox en">
+        <p class="moreText a" data-splitting>Beyond shapes,<br class="mo"> beyond lines—</p>
+        <p class="moreText b" data-splitting>An experience<br class="mo"> woven with intent.</p>
+        <p class="moreText c" data-splitting>Every pixel, every motion,<br class="mo"><br> built to tell a story<br class="mo"> that stays with you.</p>
+        <p class="moreText d" data-splitting>Step inside.<br>Follow the process.</p>
+    </div>
+</section>
+<!-- <section class="about-more">
+    <div class="txtBox en">
+        <p class="moreText a" data-splitting>More than <br class="mo"> visuals, more than code—</p>
+        <p class="moreText b" data-splitting>An experience<br class="mo"> built for people.</p>
+        <p class="moreText c" data-splitting>I design and develop with intention,<br class="web">crafting details<br class="mo">that make every interaction meaningful.</p>
+        <p class="moreText d" data-splitting>Step inside.<br>Follow the process.</p>
+    </div>
+</section> -->
+        
+
+    <!-- Process -->
+<section id="process" class="process">
+  <div class="process-inner">
+    <div class="process-title">
+      <h2>Process<span> — Of </span>  Portfolio</h2>
+    </div>
+    <div class="process-gallery">
+      <!-- 아이템 세트 1 -->
+      <div class="process-item">
+        <img src="img/Process.png" alt="">
+        <p class="art-name">01. Brainstorming</p>
+        <p class="art-info">브레인스토밍으로 아이디어를 도출하였으며,
+        <br>인사이트를 확장시키고 컨셉을 잡았습니다.</p>
+      </div>
+      <div class="process-item">
+        <p class="art-name">02. Affinity Diagram </p>
+        <p class="art-info">카테고리별 키워드를 고르고 그룹화하며 <br>컨텐츠를 구상하였습니다.</p>
+        <img src="img/Process.png" alt="">
+      </div>
+      <div class="process-item">
+        <img src="img/Process.png" alt="">
+        <p class="art-name">03. Insight</p>
+        <p class="art-info">인사이트를 통해 얻은 내용을 레이아웃에 그려보며,
+    이를 확장시켰습니다.</p>
+      </div>
+      <div class="process-item">
+        <p class="art-name">04. Idea Sketch</p>
+        <p class="art-info">래퍼런스들을 찾아보며 전체적인 포트폴리오의
+    레이아웃을 구상하였습니다.</p>
+        <img src="img/Process.png" alt="">
+      </div>
+      <div class="process-item">
+        <img src="img/Process.png" alt="">
+        <p class="art-name">05. Story Board</p>
+        <p class="art-info">피그마를 통해 구상한 레이아웃을
+    흐름에 맞게 그려보았습니다.</p>
+      </div>
+      <div class="process-item">
+        <p class="art-name">06. Design</p>
+        <p class="art-info">디자인 작업을 하며 몇 가지의 시안을 만들어보고
+    들어갈 애니메이션을 고려하며 보완하였습니다.</p>
+        <img src="img/Process.png" alt="">
+      </div>
+      <div class="process-item">
+        <img src="img/Process.png" alt="">
+        <p class="art-name">07. Coding</p>
+        <p class="art-info">최종적으로 나온 디자인을 기반으로 
+    비주얼스튜디오를 활용하여 코딩작업을 진행하였습니다.</p>
+      </div>
+</div>
+      <!-- 아이템 세트 2 (복사본) -->
+        <div class="process-item">
+        <img src="img/Process.png" alt="">
+        <p class="art-name">01. Brainstorming</p>
+        <p class="art-info">브레인스토밍으로 아이디어를 도출하였으며,
+        <br>인사이트를 확장시키고 컨셉을 잡았습니다.</p>
+      </div>
+      <div class="process-item">
+        <p class="art-name">02. Affinity Diagram </p>
+        <p class="art-info">카테고리별 키워드를 고르고 그룹화하며 <br>컨텐츠를 구상하였습니다.</p>
+        <img src="img/Process.png" alt="">
+      </div>
+      <div class="process-item">
+        <img src="img/Process.png" alt="">
+        <p class="art-name">03. Insight</p>
+        <p class="art-info">인사이트를 통해 얻은 내용을 레이아웃에 그려보며,
+    이를 확장시켰습니다.</p>
+      </div>
+      <div class="process-item">
+        <p class="art-name">04. Idea Sketch</p>
+        <p class="art-info">래퍼런스들을 찾아보며 전체적인 포트폴리오의
+    레이아웃을 구상하였습니다.</p>
+        <img src="img/Process.png" alt="">
+      </div>
+      <div class="process-item">
+        <img src="img/Process.png" alt="">
+        <p class="art-name">05. Story Board</p>
+        <p class="art-info">피그마를 통해 구상한 레이아웃을
+    흐름에 맞게 그려보았습니다.</p>
+      </div>
+      <div class="process-item">
+        <p class="art-name">06. Design</p>
+        <p class="art-info">디자인 작업을 하며 몇 가지의 시안을 만들어보고
+    들어갈 애니메이션을 고려하며 보완하였습니다.</p>
+        <img src="img/Process.png" alt="">
+      </div>
+      <div class="process-item">
+        <img src="img/Process.png" alt="">
+        <p class="art-name">07. Coding</p>
+        <p class="art-info">최종적으로 나온 디자인을 기반으로 
+    비주얼스튜디오를 활용하여 코딩작업을 진행하였습니다.</p>
+      </div>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer class="footer en animate" data-animate="motion">
+            <div class="mainText">
+                <p><span>UIUX DESIGNER</span></p>
+                <p class="en2"><span>hwn01@naver.com</span></p>
+                <p><span>contact me</span></p>
+            </div>
+            <div class="subText">
+                <p>With a couple of months experience in digital product development,<br class="mo">
+                    we understand how to create user-friendly and<br class="mo">
+                    memorable interfaces for the leading world companies.<br class="mo">
+                    Properly and harmoniously, we integrate modern<br class="mo">
+                    technologies into the classical graphic design aesthetics.
+                </p>
+            </div>
+            <div class="svgAni">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 1151.91 658.69" style="enable-background:new 0 0 1151.91 658.69;" xml:space="preserve">
+                    <style type="text/css">
+                    #svgAni01{fill:none; stroke:#fff; stroke-width:20; stroke-linecap:round; stroke-linejoin:round; stroke-miterlimit:10;}
+                    </style>
+                    <path id="svgAni01" d="M52.66,349.8c0,0,11.1,377.06,40.02,252.2s45.39-121.4,61.04-87.15c0,0,24.46,89.27,82.21-82.92
+                    c0,0-19.25,125.32,42.36,44.91c0,0,38.64-88.64,56.26-91.24c0,0,22.41-2.74,27.04,159.89c0,0,1.37,75.42-40.5,78.17
+                    c0,0-33.11-16.15,3.05-103.55c0,0,37.09-66.01,52.45-83.79c0,0,79.54-106.36,75.62-118.61c-3.92-12.24-33.75,27.82-20.57,61.07
+                    c0,0,19.56,55.9,89.47-80.04c0,0-17.13,146.08,52.84,16.74c0,0,27.1-50.38,42.74-69.18c0,0,36.5,33.39,27.55,190.41
+                    c0,0-8.76,66.79-43.18,49.15c0,0-25.05-17.11,9.48-100.23c0,0,28.8-56.48,56.45-93.41c0,0,51.58-53.99,47.9-95.13
+                    c0,0-9.02,86.03,13.83,49.24c0,0,22.26-39.33,14.96-62.66c0,0-11.43-13.03-20.55,5.42c0,0-0.26,31.81,63.99,9.4
+                    c0,0,40.18-9.2,35.28-51.88c0,0-7.26,90.84,14.42,48.97c0,0,15.23-21.94,16.17-56.19c0,0-5.68-19.87-20.68-6.49
+                    c0,0-19.14,34.34,59.91,16.24c0,0,38.57-11.07,37.98-46l-2.59,94.18c0,0,75.9-206.07,91.25-87.91c0,0,12.33,70.27,80.41-70.85"/>
+                </svg>
+            </div>
+    </footer>
+    </div>
+</body>
+</html>

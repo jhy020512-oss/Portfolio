@@ -1,0 +1,146 @@
+https://lahanhotels.com/mokpo/index.do
+
+1.스크립트 위로 튕기는것
+$(document).on('click', 'a[href="#"]', function(e){
+    e.preventDefault();
+});
+*preventDefault 는 기본으로 정의된 이벤트를 작동하지 못하게 하는 메서드입니다
+
+
+1.풀페이지 스크린캡쳐 파일
+ - https://chrome.google.com/webstore/search/image%20downloader
+ - https://chrome.google.com/webstore/search/full%20page%20screen
+
+2.리니어아이콘 웹폰트사용
+ - https://linearicons.com > 상단 Free Version 페이지로 이동
+ - 사용할 아이콘 선택 후 더블클릭
+ - html코드 body영역에 붙임 (예 : <span class="lnr lnr-italic"></span>)
+ - css.CDN 링크시킬 것  <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+
+
+3.폰트어썸 사용법 
+ - 무료폰트 경로 : https://fontawesome.com/v4.7.0/icons/
+ - font폴더와 css폴더에  font-awewome.min.css를 넣는다.
+ - head영역에 링크 <link rel="stylesheet" href="css/font-awesome.min.css">
+
+
+4.reset파일
+@charset "utf-8";
+
+/* reset */
+* {margin: 0;padding: 0;}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, tbody, tfoot, thead, tr, th, td{margin:0;padding:0;}
+h1, h2, h3, h4, h5, h6 {font-weight: 700; font-size: inherit;}
+a {color: inherit; text-decoration: inherit;}
+img {vertical-align: middle;}
+a img {border: none;}
+li {list-style: none;}
+address, em, i {font-style: normal;}
+a:focus {outline: none}
+button:focus {outline: none}
+
+
+5.이미지슬라이드 적용법
+- HTML Mark-up : 리스트(ul > li) 갯수에 맞게 작성 (이때 비주얼 공통 하단 메뉴(.menu)는 리스트 아래에 따로 작성)
+
+
+- CSS폴더에 slick.css를 넣고, js폴더에 slick.min.js를 넣는다.
+- html > head영역에..링크를 건다
+  예)
+     <link rel="stylesheet" href="css/slick.css">
+
+     <script src="js/jquery-3.3.1.min.js"></script>  //제이쿼리 파일을 위에다 붙여줍니다.
+     <script src="js/slick.min.js"></script>
+
+- script.js파일 수정
+  $(function(){
+     $('.visual .slide').slick({
+        arrows: true,  //화살표
+        dots: false, //인디케이트 해제
+        fade: true,//페이드효과
+        autoplay:true, //자동재생
+        autoplaySpeed: 4000, //재생시간
+        pauseOnHover: false,
+        pauseOnFocus: false   
+    });
+});
+ 
+*옵션은 제작할 사이트에 맞게 수정(특히 arrow와 dots 수정할 것)
+*외부파일로 작성하니까 반드시 $(function(){});으로 감싸주고 그 안에 작성
+- html파일에 정상적으로 슬라이드가 적용되었는지를 확인한다
+- arrow, dot를 css에서 작성
+- 슬라이드에 모션작성
+
+
+6.탭메뉴
+$(function() {
+    $('.introduce .roomInfo .tab li a').on('click', function(){ 
+       var num = $('.introduce .roomInfo .tab li a').index($(this)); 
+        //.introduce .roomInfo .tab li a의 갯수를 센후 변수(num)에저장 -> .index($(this)); 갯수를세주는 메소드
+       $('.introduce .roomInfo .tabBox').removeClass('on'); //모든 탭 닫음
+       $('.introduce .roomInfo .tabBox:eq(' + num + ')').addClass('on'); // eq()메소드는 인덱스값을 사용해 원하는 위치의 요소를 선택해서 가져올 수 있는 선택 메소드임
+    });
+});
+
+7.scroll.js적용법
+ - 먼저 js폴더에 scrolla.js파일 저장
+ - html > head 부분에 작성
+ - js폴더에 script.js파일 만든다.
+   예)
+     <script src="js/jquery-3.3.1.min.js"></script>
+     <script src="js/scrolla.jquery.min.js"></script> 
+     <script src="js/script.js"></script>
+
+ - body부분 애니메이션 줄 부분에  .animate클래스 넣고 data-animate="motion" 작성
+ 
+ 스크립트 예)
+
+ - script.js에 아래 스크립트 작성
+   예)$(function() {
+	$('.animate').scrolla({
+		mobile: true, //모바일버전시 활성화
+		once: false //스크롤시 딱 한번만 하고싶을땐 true
+	});    
+      }); 
+
+- scrolla.js가 잘 삽입되었는지 개발자 도구(F12)에서 확인
+- css 파일에 애니메이션 적용하는 부분에 .motion클래스붙임.
+
+8. splitting.js
+- html에서 적용할 부분을 <div></div>로 묶고 data-splitting 을 적는다
+- css에 .splitting .char나 .splitting .word를 작성
+  (.char는 낱글자, .word는 단어에 애니메이션을 적용)
+- js에 splitting();을 호출
+
+
+
+
+
+
+
+8.fixheader 스크립트 적용
+
+- script.js파일에 스크립트 작성
+  
+   var scrollNum = 0;
+   scrollNum = $(document).scrollTop();
+   fixHeader();
+
+
+ $(window).on('scroll resize', function(){
+ scrollNum = $(document).scrollTop();
+  fixHeader();  
+  });
+
+  //고정헤더 함수
+  function fixHeader(){
+     if(scrollNum > 150){
+         $('header').addClass('on');
+     } else {
+         $('header').removeClass('on');
+     }
+
+ - 개발자에서 header에 'on'클래스가 붙었는지 확인
+ - css파일로 이동해서 'on'클래스가 붙을 때 상황을 작성
+
+

@@ -1,0 +1,11 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <mask id="mask0_1205_4162" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+    <rect width="24" height="24"></rect>
+  </mask>
+  <g mask="url(#mask0_1205_4162)">
+    <path d="M13 8V4H11V8H13Z"></path>
+    <path d="M23 10H1V12H23V10Z"></path>
+    <path d="M20 14H4V16H20V14Z"></path>
+    <path d="M6 18H18V20H6V18Z"></path>
+  </g>
+</svg>

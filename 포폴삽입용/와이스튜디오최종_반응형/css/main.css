@@ -1,0 +1,254 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,700&display=swap');
+
+
+/* reset */
+* {margin: 0;padding: 0;}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, tbody, tfoot, thead, tr, th, td {margin:0;padding:0;}
+a {color: inherit; text-decoration: inherit;}
+li {list-style: none;}
+address, em, i {font-style: normal;}
+h1,h2,h3,h5,h6 {font-size: inherit;}
+a:hover {text-decoration: none; color: inherit;}
+
+/* layout */
+body {font-family: 'Noto Sans KR', sans-serif; font-size: 15px;}
+.wrap {width: 100%; margin: 0 auto; background: #fff; overflow: hidden; position: relative;}
+
+/* header */
+header {width: 100%; position: fixed; padding-top: 30px; z-index: 100; transition: all 0.5s;}
+.innerHeader {padding: 0 80px; height: 80px;}
+.innerHeader .logo {width: 170px; height: 60px; float: left; margin-right: 180px;}
+.innerHeader .logo a {display: block; width: 100%; height: 100%; position: relative;}
+.innerHeader .logo a img {width: 100%; position: absolute; top: 0; left: 0;}
+.innerHeader .logo a img:nth-child(2) {opacity: 0; transition: all 0.3s;}
+.innerHeader .introTxt {float: left; text-transform: uppercase;  color: #fff; line-height: 70px;}
+.innerHeader .menuOpen {float: right; display: block; margin-top: 20px; font-weight: bold; font-size: 16px; color: #fff;}
+.innerHeader .menuOpen span {margin-left: 15px; font-size: 33px;display: inline-block;vertical-align: middle; margin-top: -6px;}
+
+/* fixHeader */
+header.on {padding: 20px 0 0; transition: all 0.5s; }
+header:before {content: ''; width: 100%; height: 0%; background: #222; position: absolute; top: 0; transition: all 0.3s; z-index: -1;}
+header.on:before {height: 100%; transition: all 0.5s; border-bottom: 1px solid #2c2c2c;}
+header.on .innerHeader .logo a img:nth-child(2) {opacity: 1; transition: all 0.5s;}
+
+/* gnb */
+.gnb {padding: 70px 100px; height:100vh; background: #000; color: #666; z-index: 200; position: absolute; right: -100%; top: 0; box-sizing: border-box; transition: all 0.8s;}
+
+.gnb.on {right: 0; transition: all 0.8s;}
+.gnb .close {font-size: 40px; color: #fff; float: right; display: block;}
+.gnb ul {float: left; margin-right: 200px;}
+.gnb ul li a{display: block; font-size: 40px; font-weight: bold; line-height: 1.7; transition: all 0.3s;}
+.gnb ul li:first-child a,.gnb ul li a:hover {color: #fff; transition: all 0.5s;}
+
+/* visual */
+.visual {position: relative;}
+.visual .slide li {position: relative; width: 100%; height: 100vh; background: #222;}
+.visual .slide li img {position: absolute; right: 0; bottom: 0; width: 100%;} /* width: 100% */
+.visual .slide li:nth-child(3) img {top: 0;} /* 이미지가 위에 부분이 잘리는 형태라 top에 붙여줌 */
+.visual .slide li .txt {position: absolute; left: 10%; top: 50%; transform: translateY(-50%); color: #fff; font-size: 18px;}
+.visual .slide li .txt h3 {font-size: 64px; margin: 30px 0; line-height: 1.3; }
+.visual .slide li .txt a {display: inline-block;}
+.visual .slide li .txt a span {font-size: 14px; margin-left: 5px;}
+.visual .slide li .scroll {position: absolute; left:50px; bottom:10%; color: #ccc; font-weight: bold; transform: rotate(-90deg); font-size: 14px;}
+
+/* visual slick - 화살표 위치 지정 */
+.slick-arrow {position: absolute; right: 0px; bottom: 0px; width: 60px; height: 60px; line-height: 60px; background: #fff; z-index: 20; text-indent: -9999px; border: none;}
+.slick-arrow:after {content: '<'; position: absolute; width: 100%; height: 100%; color: #888; font-size: 20px; left: 0; top: 0; text-indent: 0px; font-weight: 300;transition: all 0.2s;}
+.slick-arrow.slick-prev {bottom: 60px;} /* 이전 버튼 위치변경 */ 
+.slick-arrow.slick-next:after {content: '>';} /* 다음 버튼 > 로 바꿔줌 */
+/* hover */
+.slick-arrow:hover {cursor: pointer; background:#ccc; transition: all 0.5s;}
+.slick-arrow:hover:after {font-size: 28px; color: #333; transition: all 0.2s;}
+
+/* 이미지 슬라이드 모션 */
+.slick-active .txt p {animation-name: txt1; animation-duration: 0.8s;} /*p*/
+@keyframes txt1 {
+	0% {opacity: 0; transform: rotateX(180deg) translateY(-150px);}
+    20% {opacity: 0; transform: rotateX(180deg) translateY(-150px);}
+	100% {opacity: 1; transform: rotateX(0) translateY(0);}
+}
+.slick-active .txt a {animation-name: txt2; animation-duration: 0.8s;} /*a*/
+@keyframes txt2 {
+	0% {opacity: 0; transform: rotateX(180deg) translateY(150px);}
+    20% {opacity: 0; transform: rotateX(180deg) translateY(150px);}
+	100% {opacity: 1; transform: rotateX(0) translateY(0);}
+}
+.slick-active .txt h3 {animation-name: txt3; animation-duration: 0.7s;} /*h3*/
+@keyframes txt3 {
+	0% {transform:translateX(0px);}
+    40% {transform:translateX(-50px);}
+	100% {transform:translateX(0);}
+}
+.slick-active .scroll {animation-name: scroll; animation-duration: 1s;} /*스크롤글씨*/
+@keyframes scroll {
+	0% {opacity: 0; left: -100px;}
+    30% {opacity: 0; left: -100px;}
+	100% {opacity: 1; left: 50px;}
+}
+.slick-active img {animation-name: img; animation-duration: 1s;} /*img*/
+@keyframes img {
+	0% {opacity: 0; right: -80px; transform: scale(0.99)}
+	100% {opacity: 1; right: 0px;}
+}
+
+
+/* contents */
+.contents {background: #1b1b1b; padding: 120px 0; overflow: hidden;}
+.contents .mainText {width: 1170px; margin: 0 auto; color: #fff; position: relative; overflow: hidden; padding-bottom: 50px;}
+.contents .mainText:after {content: '”';font-size: 300px; position: absolute;left: 0; top: 60px; font-weight: 400;}
+.contents .mainText:before {content: '';width: 95px; height: 95px; border-radius: 50px; background: #ffec03;  position: absolute;left: 70px; top: 130px;}
+.contents .mainText h3 {font-weight: bold; font-size: 25px; line-height: 1.2; float: left; width: 30%;}
+.contents .mainText p {float: right;  width: 70%; font-size: 25px; line-height: 1.4; font-weight: 300;}
+.contents .mainText p span {display: block; margin-top: 50px;color: #999; font-size: 20px; font-weight: 400;}
+
+/* project */
+.contents .project {color: #fff;}
+.contents .project .top {width: 1170px;  margin:  150px auto 60px; height: 90px;} /* 애니메이션 주기위해 overflow: hidden; 안주고 높이값줌 */
+.contents .project .top h3  {font-weight: bold; font-size: 35px; line-height: 1.3; float: left;}
+.contents .project .top a {float: right; font-size: 18px; display: block;}
+.contents .project .top a span {font-size: 14px; margin-left: 5px;}
+.contents .project ul {clear: both; margin: 0 auto; width: 98%; overflow: hidden;}
+.contents .project ul li {float: left; width: 24.2%; margin-right: 1%;}
+.contents .project ul li:last-child {margin-right: 0;}
+.contents .project ul li a {display: block; width: 100%; height: 100%; position: relative; font-weight: bold; overflow: hidden;}
+.contents .project ul li a img {width: 100%; transition: all 0.5s;}
+.contents .project ul li a .name {position: absolute; right: 0; bottom: 0; background: #1b1b1b; padding: 15px 25px; width: 270px; font-size: 22px; text-align: right; box-sizing: border-box;}
+.contents .project ul li a .name span {font-weight: 400; font-size: 15px;}
+.contents .project ul li a .name h3 {text-transform: uppercase}
+.contents .project ul li a:hover img{ transform: scale(1.2); transition: all 1s;}
+
+/* partner */
+.contents .partner {width: 1170px; margin: 120px auto; color: #fff;}
+.contents .partner h3 {font-size: 17px; font-weight: 400;}
+.contents .partner ul {overflow: hidden;}
+.contents .partner ul li {float: left; width: 29%;  height: 100px; text-align: center; margin-top: 80px;}
+.contents .partner ul li:nth-child(1),.contents .partner ul li:nth-child(5) {text-align: left; width: 21%;}
+.contents .partner ul li:nth-child(4n) {text-align: right; width: 21%;}
+.contents .partner ul li img {display: inline-block; opacity: 0.4; transition: all 0.3s;}
+.contents .partner ul li:hover img { opacity: 1; transition: all 0.3s;}
+
+/* contact */
+.contents .contact {width: 100%; position: relative; background:url(../img/contact.jpg) no-repeat; background-size: 90%; background-position: left;background-attachment: fixed; color: #fff; padding: 190px 0; box-sizing: border-box;}
+.contents .contact .inner {width: 1170px; margin: 0 auto; font-size: 17px; line-height: 1.3;}
+.contents .contact .inner h3 {font-weight: 400;}
+.contents .contact .inner .tel {font-weight: bold; font-size: 55px; margin: 50px 0;}
+
+/* footer */
+footer {background: #1b1b1b; color: #999; padding: 0 80px 80px; position: relative;}
+footer ul {overflow: hidden;}
+footer ul li {float: left; width: 33.333%;}
+footer ul li:nth-child(2) {font-size: 16px; color: #eee; line-height: 2;}
+footer ul li:nth-child(2) span {font-weight: bold;margin-right: 10px; color: #999;}
+footer ul li:nth-child(3) {font-weight: bold;}
+footer .goTop {position:absolute; right:80px; bottom:60px; font-size:48px; color: #fff;}
+
+
+
+/* 반응형 */
+@media screen and (max-width:1200px) {
+	br.mo {display: none;} /* pc버전에서 사용한 br 제거 */
+	.contents .mainText, .contents .project .top ,.contents .partner, .contents .contact .inner{width: 92%;} 
+	.slick-arrow:hover {cursor: pointer; background:#fff;} /* 호버효과제거 */
+	.slick-arrow:hover:after {font-size: 20px; color: #888;}
+  .contents .project ul li a .name { position: relative; width: 100%; padding-bottom: 30px; font-size: 20px;} 
+
+	/* 화살표 만들기위해 패딩값/포지션 변경 */
+	.contents .project ul li a .name:after {content: '→'; position: absolute; right: 15px; bottom: 0; font-size: 18px;} /* 화살표 만들어줌 */
+	/* https://unicode-table.com/kr/ - 이사이트에서 화살표 긁어올수있음 (각종 다양한 특수기호 카피 가능) */
+	.contents .project ul li a:hover img{ transform: scale(1);} /* 호버효과제거 */
+	.contents .contact {width: 90%; background-attachment: scroll; background-size: cover; background-position: center;} /* 백그라운드 고정 해제 */
+	footer .goTop {right: 20px; bottom: 20px; }
+}
+
+@media screen and (max-width:1024px) {
+	.visual .slide li img {width: auto; right: -30%;} /* 슬라이드 이미지 크기와 위치 조정 */
+	@keyframes img { /* 위치 수정에 맞게 애니메이션 수정 */
+		0% {opacity: 0; right: -50%; transform: scale(0.99)}
+		100% {opacity: 1; right: -30%;}
+	}
+	.visual .slide li .txt h3 {font-size: 50px;}
+}
+
+@media screen and (max-width:768px) {
+	header {padding-top: 20px;} /* 헤더 전체적으로 사이즈조정 */
+	header.on {padding: 10px 0 0;}
+	.innerHeader {padding: 0 30px; height: 70px;}
+    .innerHeader .logo {width: 150px; margin-right: 100px;}
+	.innerHeader .introTxt {line-height: 60px;}
+   .gnb {padding: 70px}
+	.gnb ul {margin-right: 180px;}
+
+	
+	.visual .slide li img {width: auto; right: -68%;} /* 슬라이드 이미지 크기와 위치 조정 */
+	@keyframes img { /* 위치 수정에 맞게 애니메이션 수정 */
+		0% {opacity: 0; right: -80%; transform: scale(0.99)}
+		100% {opacity: 1; right: -68%;}
+	}
+    .visual .slide li .txt h3 {font-size: 40px;}
+    .contents .mainText:before {width: 80px; height: 80px; top: 150px;}
+	.contents .mainText:after {font-size: 280px; top: 80px;}
+    .contents .project ul {width: 95%}
+	.contents .project ul li {width: 48.9%;margin-right:2.2%; margin-bottom: 25px;}
+	.contents .project ul li:nth-child(2n) {margin-right: 0;}
+	footer {padding: 0 30px 30px;}
+	footer ul li {width: 50%; height: 110px;}
+}
+
+
+@media screen and (max-width:650px) {
+	body {font-size: 14px;}
+	.innerHeader {height: 55px; padding: 0 15px}
+	.innerHeader .logo {width: 120px; height: 55px; margin-right: 0px;}
+	.innerHeader .introTxt {line-height: 55px;}
+	.innerHeader .menuOpen {margin-top: 10px; color: transparent;} /* menu 글씨 투명 */
+	.innerHeader .menuOpen span {color: #fff; font-size: 28px;}
+	header.on .introTxt{opacity: 0; transition: all 0.2s;}
+	.gnb {right: -2000px; padding: 30px; width: 70%;}
+	.gnb ul {margin-right: 0;}
+	.gnb ul li a ,.gnb .close{font-size: 30px;}
+	.visual .slide li img {width: auto; right: -105%; height: 85%;} /* 슬라이드 이미지 크기와 위치 조정 */
+	@keyframes img { /* 위치 수정에 맞게 애니메이션 수정 */
+		0% {opacity: 0; right: -115%; transform: scale(0.99)}
+		100% {opacity: 1; right: -105%;}
+	}
+	.visual .slide li .txt h3 {font-size: 28px;}
+	.visual .slide li .txt {font-size: 15px;}
+	.visual .slide li .scroll {font-size: 12px; left: 0;} /* 스크롤위치조정 */
+	@keyframes scroll {/* 위치 수정에 맞게 애니메이션 수정 */
+		0% {opacity: 0; left: -50px;}
+		30% {opacity: 0; left: -50px;}
+		100% {opacity: 1; left: 0px;}
+	}	
+	.slick-arrow {width: 50px; height: 50px; line-height: 50px;} /* 화살표 크기조정 */
+	.slick-arrow.slick-prev {bottom: 50px;}
+	.contents {padding: 80px 0;}
+	.contents .mainText h3 {width: 100%;}
+	.contents .mainText:before { top: 80px; left: 45px;}
+	.contents .mainText:after {font-size: 190px; top: 50px;}
+	.contents .mainText p {width: 100%; margin-top: 150px; font-size: 20px;}
+	.contents .mainText p span {margin-top: 30px; font-size: 18px;}
+	.contents .project .top {margin:40px auto 0px}
+	.contents .project .top h3 {font-size: 22px;}
+	.contents .project .top a {margin-top: 30px; font-size: 15px;}
+	.contents .project ul {width: 92%;}
+	.contents .project ul li {width: 100%; margin-right: 0; margin-bottom: 35px;} 
+	.contents .project ul li a .name {text-align: left; padding-bottom: 0;}
+	.contents .partner {margin: 80px auto;}
+	.contents .partner ul li {width: 50%; text-align: center; margin-top: 25px; height: 80px; line-height: 80px;}
+	/* pc버전에서 사이즈 다르게 해둔것들 맞춰줌 */
+	.contents .partner ul li:nth-child(1),.contents .partner ul li:nth-child(5) {width: 50%; text-align: center;}
+	.contents .partner ul li:nth-child(4n) {width: 50%; text-align: center;}
+	.contents .partner ul li img {width: 60%;}
+	.contents .partner ul li:nth-child(4) img {width: 44%;} /* 튀는 크기 로고 줄여줌 */
+	.contents .contact {width: 100%; padding: 180px 0;}
+	.contents .contact .inner {font-size: 14px;}
+	.contents .contact .inner .tel {font-size: 35px; margin: 30px 0;}
+	footer ul li {width: 100%; height: auto; margin-bottom: 40px;}
+	footer ul li:nth-child(2) {font-size: 14px;}
+	footer .goTop {right: 15px; bottom: 15px; font-size: 32px;}
+}
+
+
+
+
