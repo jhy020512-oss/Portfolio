@@ -32,18 +32,19 @@ header .gnb .a{display:block; width: 10%;}
 /* visual */
 .visual{width: 100%;}
 .visual .inner{width: 100%; margin: 5% auto;}
-.visual .inner h2{width: 100%;font-family:"Cormorant Garamond", serif; font-size: 110px; font-weight:400; margin-left: 5%; margin-top:200px;}
+.visual .inner h2{font-family:"Cormorant Garamond", serif; font-size: 110px; font-weight:400; margin-left: 5%; margin-top:200px;}
 .visual .inner .video{width: 100%; height: 100%; object-fit: cover; margin-top: 20px; margin: 20px 0;}
 
 /* overview */
-.overview .over{width:100%; display:flex; justify-content: space-between; margin:200px auto;}
-.overview .over .leftBox{width:60%; height:auto; margin-left:5%;}
+.overview {width: 100%;}
+.overview .over{width:90%; display:flex; justify-content: space-between; margin:200px auto;}
+.overview .over .leftBox{width:60%; height:auto;}
 .overview .over .leftBox h3{font-family:"Cormorant Garamond", serif; font-size: 30px; margin-bottom: 50px;}
 .overview .over .leftBox h2{font-family:"Cormorant Garamond", serif; font-size: 105px; font-weight:400; margin-bottom: 50px;}
 .overview .over .leftBox .txt{font-size: 18px; margin-bottom: 50px; color: #444;}
 .overview .over .leftBox a{font-family:"Cormorant Garamond",serif; font-size: 20px;}
 .overview .over .leftBox img{padding: 0 20px;}
-.overview .over .rightBox{width: 40%; height:auto; display:flex; justify-content: space-between; margin-right:4%;}
+.overview .over .rightBox{width: 40%; height:auto; display:flex; justify-content: space-between;}
 .overview .over .rightBox img{padding: 0 10px;}
 
 
@@ -81,12 +82,12 @@ header .gnb .a{display:block; width: 10%;}
 .Press .pre .bottom ul li .date{font-size: 15px; color:grey;}
 
 /* fulfill */
-.fulfill .ful{width: 110%; height:auto ; position: relative;overflow: hidden;}
-.fulfill .scroll{display:inline-block; white-space: nowrap; animation: scrollText 30s linear infinite; height: 250px; width: 100%; width: max-content;}
-.fulfill  .scroll h2{font-size:250px; font-weight: 400; font-family:"Cormorant Garamond",serif;display:inline-block; white-space: nowrap;}
-.fulfill .ful .Recruit{width:100%; height: 700px; position: relative;object-fit: cover;margin-top: 50px;}
+.fulfill {width: 100%; height:auto ; position: relative;overflow: hidden;}
+.fulfill .scroll{display:inline-block; white-space: nowrap; animation: scrollText 30s linear infinite; height: 250px; width: 100%; width: max-content;overflow:hidden;}
+.fulfill  .scroll h2{font-size:250px; font-weight: 400; font-family:"Cormorant Garamond",serif; display:inline-block; white-space: nowrap;}
+.fulfill .ful .Recruit{width:100%; height: 700px; position: relative;object-fit: cover; margin-top: 50px;}
 .fulfill .ful .Recruit img{width:100% ;height: 100%;}
-.fulfill .ful .text{position:absolute;top:220px;left:5%;}
+.fulfill .ful .text{position:absolute;top:350px;left:5%;}
 .fulfill .ful .text h3{font-family:"Cormorant Garamond",serif; font-size:30px; color: #FFF; margin-bottom: 20px;}
 .fulfill .ful .text p{font-size:48px;font-weight:500 ;color: #FFF;margin-bottom:30px;} 
 .fulfill .ful .text a{font-size:20px; text-align: center; align-items: center; color: #FFF; height: 25px;}

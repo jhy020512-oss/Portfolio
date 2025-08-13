@@ -113,7 +113,7 @@
         <div class="bg-item" style="top:-3%; left:17%;">
             <img src="img/어항.jpg" alt="">
         </div>
-                <div class="bg-item" style="bottom:3%; right:10%;">
+        <div class="bg-item" style="bottom:3%; right:10%;">
             <img src="img/빨강지붕.jpg" alt="">
         </div>
     </div>
@@ -146,9 +146,8 @@
                 <h3 class="en2">My Profile</h3>
                 <div class="profile-content">
                 <div class="introduce">
-                    <h2 class="tit">Familiar yet Fresh,<br>Simple yet Meaningful.</h2>
+                    <h2 class="tit">Familiar yet Fresh, Simple yet Meaningful.</h2>
                     <p class="ko">단순하지만 의미있고, 친숙하지만 신선한 경험을 주는 디자이너</p>
-                    <p class="en">Everyday moments like these sparked my interest in user experience.I'm learning to design with structure, empathy, and user-centered thinking. I want to create experiences that feel familiar yet fresh, simple yet meaningful.</p>
                 </div>
                 <div class="detail">
                     <ul>
@@ -210,6 +209,10 @@
 
     <!-- skill -->
     <section class="skill">
+                    <!-- 배경 영상 -->
+    <video class="background-video" autoplay muted loop playsinline>
+        <source src="img/bg-interest.mp4" type="video/mp4">
+    </video>
         <div class="skill-inner">
             <p>Creatives from skills</p>
             <ul class="icon">
@@ -230,17 +233,13 @@
 <!-- Team Projects -->
 <section class="about" id="Projects">
   <div class="about-main">
-    <p class="mainbg"><img src="img/work4.jpg" alt=""></p>
+    <!-- <p class="mainbg"><img src="img/work4.jpg" alt=""></p> -->
     <div class="txtBox animate" data-animate='motion'>
       <h2 class="title en2">Team Project</h2>
       <p class="english en" data-splitting>
-        From February to August 2025, I completed the UI/UX course at Izen Academy,<br>
-        where I actively participated in multiple team projects applying the knowledge and skills I gained.<br>
-        I engaged in the full UI/UX process, including planning, research, design, and prototyping,<br>
-        which strengthened my user-centered problem-solving skills and ability to collaborate effectively.<br>
-        These experiences allowed me to acquire practical insights<br>
-        into real-world project workflows and design methodologies,<br>
-        enhancing my professional sensibility in the field.
+        From February to August 2025, I completed a UI/UX course at Izen Academy.<br>
+        I gained hands-on experience in planning, research, design, and prototyping through team projects.<br>
+        This strengthened my user-centered problem-solving skills and practical understanding of real-world workflows.
       </p>
       <p class="korean">
         2025년 2월부터 8월까지 이젠아카데미 UI/UX 과정을 수강하며, <br class="mo">배운 지식과 기술을 바탕으로 팀 프로젝트를 진행했습니다.
@@ -249,63 +248,70 @@
       </p>
     </div>
   </div>
+</section>
 
-  <!-- teamproject 섹션 삽입 -->
-  <div class="teamproject">
+<!-- teamproject 섹션 삽입 -->
+<!-- Team Project -->
+<section class="teamproject" id="TeamProject">
     <div class="container">
-      <!-- 사이드 메뉴 -->
-      <div class="sidebar">
-        <ul>
-          <li data-index="0" class="active">01 Project Overview</li>
-          <li data-index="1">02 My Role & Process</li>
-          <li data-index="2">03 Final Outcome</li>
+    <!-- 왼쪽: 제목/목차/버튼/설명 -->
+    <div class="sidebar">
+        <h2 class="title en2">Dinning Code<br>App Re-design</h2>
+        <ul class="index">
+            <li>01 overview</li>
+            <li>02 Role</li>
+            <li>03 Performance</li>
         </ul>
-        <button class="view-more">View More</button>
-      </div>
-
-      <!-- 콘텐츠 영역 -->
-      <div class="content">
-        <div class="content-inner">
-          <div class="content-box ">
-            <img src="img/탬버린즈.png" alt=" ">
-            <p>오프라인에서 경험하는 탬버린즈의 감성을 온라인에서도 구현하기 위한 웹 리뉴얼 프로젝트</p>
-          </div>
-
-          <div class="content-box">
-            <img src="img/탬버린즈.png" alt="리서치 자료">
-            <p>데스크 리서치와 벤치마킹을 통해 웹사이트 구조와 사용자 여정을 설계</p>
-          </div>
-
-          <div class="content-box">
-            <div class="before-after">
-              <img src="img/탬버린즈.png" alt="Before">
-              <img src="img/탬버린즈.png" alt="After">
-            </div>
-            <p>리뉴얼 후, 브랜드 감성을 온·오프라인에서 일관되게 경험 가능</p>
-          </div>
-          <div class="btn2">
-            <!-- 좌우 버튼 -->
-            <button class="nav-btn prev">&#10094;</button>
-            <button class="nav-btn next">&#10095;</button>
-          </div>
+        <div class="actions">
+            <a href="#" class="btn primary">기획서 More</a>
+            <a href="#" class="btn">web More</a>
         </div>
-      </div>
-    </div>        
-  </div>
+        <!-- 현재 슬라이드 설명: JS로 활성 슬라이드의 data-desc를 이곳에 넣음 -->
+        <p class="desc" id="tp-desc">슬라이드 설명이 여기에 표시됩니다.</p>
+    </div>
 
-  <section class="about-second-wrap">
-    <div class="about-second">
-      <div class="txts">
-        <p class="txt1 en2"><span class="img1"><img src="img/aboutsecond1.png" alt=""></span> (My Journey)</p>
-        <p class="txt2 en2"><span class="text2">Design <br class="mo">and Code</span> <span class="img2"><img src="img/aboutsecond2.png" alt=""></span></p>
-        <p class="txt3 en2"><span class="text3">Creative</span> <span class="img3"><img src="img/aboutsecond3.png" alt=""> </span> <span class="text4">Growth</span></p>
+    <!-- 오른쪽: 목업 슬라이더 -->
+    <div class="content">
+        <div class="mockup-slider" aria-live="polite">
+        <!-- 좌/우 화살표 -->
+        <button class="arrow prev" aria-label="이전 이미지">&#10094;</button>
+
+        <!-- 슬라이드 목록 -->
+        <div class="slides">
+            <!-- 각 슬라이드는 data-desc로 설명을 보유 -->
+            <div class="slide is-active" id="slide-1" data-desc="홈/FAQ 허브와 카드 네비게이션으로 문의 동선을 1탭으로 단축.">
+                <img src="img/탬버린즈.png" alt="탬버린즈 리디자인 목업 1">
+            </div>
+            <div class="slide" id="slide-2" data-desc="검색 필터 상단 고정 + 결과 카드 정보 구조 정리.">
+                <img src="img/탬버린즈.png" alt="탬버린즈 리디자인 목업 2">
+            </div>
+            <div class="slide" id="slide-3" data-desc="리뷰 작성 플로우 개편으로 참여율 상승 유도.">
+                <img src="img/탬버린즈.png" alt="탬버린즈 리디자인 목업 3">
+            </div>
+        </div>
+
+        <button class="arrow next" aria-label="다음 이미지">&#10095;</button>
+
+        <!-- 점(인디케이터) -->
+        <div class="dots" role="tablist" aria-label="슬라이드 위치 표시">
+            <button class="dot is-active" role="tab" aria-selected="true" data-index="0" aria-controls="slide-1">
+            <span class="sr-only">1</span>
+            </button>
+            <button class="dot" role="tab" aria-selected="false" data-index="1" aria-controls="slide-2">
+            <span class="sr-only">2</span>
+            </button>
+            <button class="dot" role="tab" aria-selected="false" data-index="2" aria-controls="slide-3">
+            <span class="sr-only">3</span>
+            </button>
+        </div>
+        </div>
     </div>
     </div>
-  </section>
+</section>
 
   <section class="about-third">
     <div class="video-background">
-      <video src="img/KakaoTalk_20250620_164755534.mp4" autoplay muted loop playsinline></video>
+      <video src="img/KakaoTalk_20250620_164755534 (1).mp4" autoplay muted loop playsinline></video>
       <div class="texts">
         <p class="kor">CSS, HTML, jQuery, JavaScript, GSAP 등 <br class="mo"> 다양한 디자인 코드를 학습했습니다.<br class="web"> 학습한 기술들을 직접 적용해 클론코딩을 만들어<br class="mo"> 다양한 웹 요소들을 구현해 보았습니다.<br class="web"> 이를 통해 디자인뿐만 아니라 기술적 구현 능력도 함께 발전시킬 수 있었습니다.</p> 
         <p class="eng en">I have learned various design codes <br class="mo"> such as CSS, HTML, jQuery, JavaScript, and GSAP. <br class="web">I applied the skills I learned <br class="mo"> by creating clone coding projects to implement various web elements. <br class="web"> Through this, I was able to develop not only my design skills  <br class="mo">but also my technical implementation abilities.</p>
@@ -562,9 +568,10 @@
     <!-- Footer -->
     <footer class="footer en animate" data-animate="motion">
             <div class="mainText">
-                <p><span>UIUX DESIGNER</span></p>
-                <p class="en2"><span>hwn01@naver.com</span></p>
                 <p><span>contact me</span></p>
+                <p class="en2"><span>010.3845.1801</span></p>
+                <p class="en2"><span>hwn01@naver.com</span></p>
+                <!-- <p><span></span></p> -->
             </div>
             <div class="subText">
                 <p>With a couple of months experience in digital product development,<br class="mo">

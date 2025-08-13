@@ -112,6 +112,8 @@ function splitTextWithLineBreaks(selector) {
   });
 }
 
+
+
 if (window.innerWidth >= 1024) {
   splitTextWithLineBreaks('.kor');
   splitTextWithLineBreaks('.eng');
@@ -154,44 +156,107 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 
-// team project
-$(function () {
-    const menuItems = document.querySelectorAll(".sidebar li");
-    const contentBoxes = document.querySelectorAll(".content-box");
-    const prevBtn = document.querySelector(".nav-btn.prev");
-    const nextBtn = document.querySelector(".nav-btn.next");
+// // team project
+// $(function () {
+//     const menuItems = document.querySelectorAll(".sidebar li");
+//     const contentBoxes = document.querySelectorAll(".content-box");
+//     const prevBtn = document.querySelector(".nav-btn.prev");
+//     const nextBtn = document.querySelector(".nav-btn.next");
 
-    let currentIndex = 0;
+//     let currentIndex = 0;
 
-    function showContent(index) {
-        contentBoxes.forEach((box, i) => {
-            box.classList.toggle("active", i === index);
-        });
-        menuItems.forEach((item, i) => {
-            item.classList.toggle("active", i === index);
-        });
-        currentIndex = index;
-    }
+//     function showContent(index) {
+//         contentBoxes.forEach((box, i) => {
+//             box.classList.toggle("active", i === index);
+//         });
+//         menuItems.forEach((item, i) => {
+//             item.classList.toggle("active", i === index);
+//         });
+//         currentIndex = index;
+//     }
 
-    menuItems.forEach((item, index) => {
-        item.addEventListener("click", () => {
-            showContent(index);
-        });
+//     menuItems.forEach((item, index) => {
+//         item.addEventListener("click", () => {
+//             showContent(index);
+//         });
+//     });
+
+//     prevBtn.addEventListener("click", () => {
+//         let newIndex = (currentIndex - 1 + contentBoxes.length) % contentBoxes.length;
+//         showContent(newIndex);
+//     });
+
+//     nextBtn.addEventListener("click", () => {
+//         let newIndex = (currentIndex + 1) % contentBoxes.length;
+//         showContent(newIndex);
+//     });
+
+//     // 초기 화면 표시
+//     showContent(0);
+// });
+
+
+
+
+// 팀프로젝트2
+document.addEventListener("DOMContentLoaded", function () {
+  const slides = document.querySelectorAll(".slide");
+  const dots = document.querySelectorAll(".dot");
+  const prevBtn = document.querySelector(".arrow.prev");
+  const nextBtn = document.querySelector(".arrow.next");
+  const descBox = document.getElementById("tp-desc");
+
+  let currentIndex = 0;
+  const totalSlides = slides.length;
+
+  function showSlide(index) {
+    slides.forEach(slide => slide.classList.remove("is-active"));
+    slides[index].classList.add("is-active");
+
+    dots.forEach(dot => dot.classList.remove("is-active"));
+    dots[index].classList.add("is-active");
+
+    const desc = slides[index].getAttribute("data-desc");
+    descBox.textContent = desc;
+
+    currentIndex = index;
+  }
+
+  prevBtn.addEventListener("click", () => {
+    const newIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    showSlide(newIndex);
+  });
+
+  nextBtn.addEventListener("click", () => {
+    const newIndex = (currentIndex + 1) % totalSlides;
+    showSlide(newIndex);
+  });
+
+  dots.forEach(dot => {
+    dot.addEventListener("click", () => {
+      const index = parseInt(dot.getAttribute("data-index"), 10);
+      showSlide(index);
     });
+  });
 
-    prevBtn.addEventListener("click", () => {
-        let newIndex = (currentIndex - 1 + contentBoxes.length) % contentBoxes.length;
-        showContent(newIndex);
-    });
-
-    nextBtn.addEventListener("click", () => {
-        let newIndex = (currentIndex + 1) % contentBoxes.length;
-        showContent(newIndex);
-    });
-
-    // 초기 화면 표시
-    showContent(0);
+  showSlide(0);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -304,3 +369,78 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   );
 });
+
+
+
+
+
+
+// 팀프로젝트
+const tabs = document.querySelectorAll('.sidebar ul li');
+const contentGroups = document.querySelectorAll('.content-group');
+const paginationIndicator = document.querySelector('.pagination-indicator');
+const prevBtn = document.querySelector('.nav-btn.prev');
+const nextBtn = document.querySelector('.nav-btn.next');
+
+let currentGroupIndex = 0;  // 탭 인덱스
+let currentContentIndex = 0; // content-box 인덱스
+
+function showGroup(index) {
+  currentGroupIndex = index;
+  currentContentIndex = 0;
+
+  contentGroups.forEach((group, i) => {
+    group.style.display = (i === index) ? 'block' : 'none';
+    group.querySelectorAll('.content-box').forEach(box => box.style.display = 'none');
+  });
+
+  // 첫번째 content-box 보이기
+  const activeGroup = contentGroups[index];
+  const boxes = activeGroup.querySelectorAll('.content-box');
+  if (boxes.length > 0) {
+    boxes[0].style.display = 'block';
+  }
+
+  updatePagination();
+}
+
+function updatePagination() {
+  const activeGroup = contentGroups[currentGroupIndex];
+  const boxes = activeGroup.querySelectorAll('.content-box');
+  paginationIndicator.textContent = `${currentContentIndex + 1} / ${boxes.length}`;
+
+  prevBtn.disabled = currentContentIndex === 0;
+  nextBtn.disabled = currentContentIndex === boxes.length - 1;
+}
+
+prevBtn.addEventListener('click', () => {
+  const boxes = contentGroups[currentGroupIndex].querySelectorAll('.content-box');
+  if (currentContentIndex > 0) {
+    boxes[currentContentIndex].style.display = 'none';
+    currentContentIndex--;
+    boxes[currentContentIndex].style.display = 'block';
+    updatePagination();
+  }
+});
+
+nextBtn.addEventListener('click', () => {
+  const boxes = contentGroups[currentGroupIndex].querySelectorAll('.content-box');
+  if (currentContentIndex < boxes.length - 1) {
+    boxes[currentContentIndex].style.display = 'none';
+    currentContentIndex++;
+    boxes[currentContentIndex].style.display = 'block';
+    updatePagination();
+  }
+});
+
+tabs.forEach((tab, i) => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    showGroup(i);
+  });
+});
+
+
+// 초기 표시
+showGroup(0);
