@@ -155,108 +155,123 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 
+/* project-sliders.js : teamproject(1/2/3) 공통 슬라이더 */
 
-// // team project
-// $(function () {
-//     const menuItems = document.querySelectorAll(".sidebar li");
-//     const contentBoxes = document.querySelectorAll(".content-box");
-//     const prevBtn = document.querySelector(".nav-btn.prev");
-//     const nextBtn = document.querySelector(".nav-btn.next");
-
-//     let currentIndex = 0;
-
-//     function showContent(index) {
-//         contentBoxes.forEach((box, i) => {
-//             box.classList.toggle("active", i === index);
-//         });
-//         menuItems.forEach((item, i) => {
-//             item.classList.toggle("active", i === index);
-//         });
-//         currentIndex = index;
-//     }
-
-//     menuItems.forEach((item, index) => {
-//         item.addEventListener("click", () => {
-//             showContent(index);
-//         });
-//     });
-
-//     prevBtn.addEventListener("click", () => {
-//         let newIndex = (currentIndex - 1 + contentBoxes.length) % contentBoxes.length;
-//         showContent(newIndex);
-//     });
-
-//     nextBtn.addEventListener("click", () => {
-//         let newIndex = (currentIndex + 1) % contentBoxes.length;
-//         showContent(newIndex);
-//     });
-
-//     // 초기 화면 표시
-//     showContent(0);
-// });
-
-
-
-
-// 팀프로젝트2
-document.addEventListener("DOMContentLoaded", function () {
-  const slides = document.querySelectorAll(".slide");
-  const dots = document.querySelectorAll(".dot");
-  const prevBtn = document.querySelector(".arrow.prev");
-  const nextBtn = document.querySelector(".arrow.next");
-  const descBox = document.getElementById("tp-desc");
-
-  let currentIndex = 0;
-  const totalSlides = slides.length;
-
-  function showSlide(index) {
-    slides.forEach(slide => slide.classList.remove("is-active"));
-    slides[index].classList.add("is-active");
-
-    dots.forEach(dot => dot.classList.remove("is-active"));
-    dots[index].classList.add("is-active");
-
-    const desc = slides[index].getAttribute("data-desc");
-    descBox.textContent = desc;
-
-    currentIndex = index;
+// DOM 준비되면 실행 (외부파일 안전)
+(function () {
+  function initAll() {
+    document
+      .querySelectorAll('.teamproject, .teamproject2, .teamproject3')
+      .forEach(initSection);
   }
 
-  prevBtn.addEventListener("click", () => {
-    const newIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-    showSlide(newIndex);
-  });
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAll);
+  } else {
+    initAll();
+  }
 
-  nextBtn.addEventListener("click", () => {
-    const newIndex = (currentIndex + 1) % totalSlides;
-    showSlide(newIndex);
-  });
+  // 각 섹션 초기화
+  function initSection(section) {
+    const slidesContainer = section.querySelector('.slides, .slides2, .slides3');
+    const slideNodeList   = section.querySelectorAll('.slide, .slide2, .slide3');
+    const dotsContainer   = section.querySelector('.dots, .dots2, .dots3');
+    const explainZone     = section.querySelector('.explain-zone, .explain-zone2, .explain-zone3');
+    const menuItems       = section.querySelectorAll('.side ul li a, .side2 ul li a, .side3 ul li a');
+    const leftArrow       = section.querySelector('.arrow.left');
+    const rightArrow      = section.querySelector('.arrow.right');
 
-  dots.forEach(dot => {
-    dot.addEventListener("click", () => {
-      const index = parseInt(dot.getAttribute("data-index"), 10);
-      showSlide(index);
+    // 필수 요소 없으면 패스
+    if (!slidesContainer || !slideNodeList.length || !dotsContainer) return;
+
+    const slides = Array.from(slideNodeList);
+
+    // data-section별 그룹핑
+    const groups = {};
+    slides.forEach((el, globalIndex) => {
+      const g = Number(el.dataset.section || 0);
+      if (!groups[g]) groups[g] = { slides: [], startIndex: 0 };
+      groups[g].slides.push({ el, globalIndex });
     });
-  });
 
-  showSlide(0);
-});
+    const sectionKeys = Object.keys(groups).map(Number).sort((a, b) => a - b);
+    if (!sectionKeys.length) return;
 
+    // 각 그룹 시작 인덱스 계산
+    let run = 0;
+    sectionKeys.forEach((k) => {
+      groups[k].startIndex = run;
+      run += groups[k].slides.length;
+    });
 
+    let curSection = sectionKeys[0];
+    let curIndex = 0;
 
+    // 점 네비 생성/갱신
+    function buildDots() {
+      dotsContainer.innerHTML = '';
+      const len = groups[curSection].slides.length;
+      for (let i = 0; i < len; i++) {
+        const btn = document.createElement('button');
+        if (i === 0) btn.classList.add('active');
+        btn.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(btn);
+      }
+    }
 
+    // 이동 (각 .slide* 가 min-width:100% 라는 전제)
+    function goTo(i) {
+      const len = groups[curSection].slides.length;
+      if (i < 0) i = len - 1;
+      if (i >= len) i = 0;
+      curIndex = i;
 
+      const globalIndex = groups[curSection].startIndex + curIndex;
+      slidesContainer.style.transform = `translateX(-${globalIndex * 100}%)`;
 
+      if (explainZone) {
+        const desc = groups[curSection].slides[curIndex].el.dataset.desc || '';
+        explainZone.innerHTML = desc; // <br> 포함 허용
+      }
 
+      // 점 active
+      Array.from(dotsContainer.children).forEach((d, idx) => {
+        d.classList.toggle('active', idx === curIndex);
+      });
+    }
 
+    // 화살표
+    leftArrow && leftArrow.addEventListener('click', () => goTo(curIndex - 1));
+    rightArrow && rightArrow.addEventListener('click', () => goTo(curIndex + 1));
 
+    // 카테고리 클릭 → 해당 섹션의 첫 슬라이드로
+    if (menuItems.length) {
+      menuItems.forEach((a, idx) => {
+        a.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetKey = sectionKeys[idx] ?? 0;
+          curSection = targetKey;
+          curIndex = 0;
 
+          menuItems.forEach((el) => el.parentElement.classList.remove('active'));
+          a.parentElement.classList.add('active');
 
+          buildDots();
+          goTo(0);
+        });
+      });
+      // 초기 active
+      menuItems[0].parentElement.classList.add('active');
+    }
 
+    // 초기화
+    buildDots();
+    goTo(0);
 
-
-
-
+    // 리사이즈 시 위치 재적용(퍼센트 이동이라 보정만)
+    window.addEventListener('resize', () => goTo(curIndex));
+  }
+})();
 
 
 
@@ -305,17 +320,7 @@ gsap.timeline({
 
 
 
-// process 아이템 활성화
-gsap.utils.toArray('.process-item').forEach(function(item) {
-  gsap.timeline({
-    scrollTrigger: {
-      trigger: item,
-      start: '100% center',
-      toggleClass: { targets: item, className: 'active' },
-      scrub: 0.3
-    }
-  });
-});
+
 
 
 
