@@ -30,28 +30,108 @@ $(function() {
   });
 });
 
-// ==============================
-// GSAP & ScrollTrigger 설정
-// ==============================
-gsap.registerPlugin(ScrollTrigger);
 
-// #hero 영역 고정 + 글씨 전환
-ScrollTrigger.create({
-  trigger: ".hero",
-  start: "top top",
-  end: "bottom+=100% top",
 
-  scrub: true,
-  onUpdate: self => {
-    const progress = self.progress;
-    if (progress < 0.5) {
-      gsap.to(".hero .hero-inner .hero-content1", {opacity: 1, duration: 0.3});
-      gsap.to(".hero .hero-inner .hero-content2", {opacity: 0, duration: 0.3});
-    } else {
-      gsap.to(".hero .hero-inner .hero-content1", {opacity: 0, duration: 0.3});
-      gsap.to(".hero .hero-inner .hero-content2", {opacity: 1, duration: 0.3});
+// 04. 메인(hero)섹션,  스크롤 시 글씨 바뀌기
+document.addEventListener("DOMContentLoaded", () => {
+  const hero = document.querySelector("#hero");
+  const content1 = document.querySelector(".hero-content1");
+  const content2 = document.querySelector(".hero-content2");
+  const bgItems = document.querySelectorAll(".hero-bg .bg-item");
+
+  let step = 0; // 0 = content1, 1 = content2, 2 = 다음 섹션
+  let isAnimating = false;
+
+  // 초기 상태
+  content1.style.opacity = "1";
+  content2.style.opacity = "0";
+  content1.style.transition = "opacity 1s ease";
+  content2.style.transition = "opacity 1s ease";
+
+  function showContent1() {
+    content1.style.opacity = "1";
+    content2.style.opacity = "0";
+  }
+
+  function showContent2() {
+    content1.style.opacity = "0";
+    content2.style.opacity = "1";
+  }
+
+  function handleScroll(e) {
+    if (isAnimating) return;
+    if (!hero.contains(document.elementFromPoint(window.innerWidth / 2, window.innerHeight / 2))) return;
+
+    e.preventDefault();
+    isAnimating = true;
+
+    if (e.deltaY > 0) { // 아래로
+      if (step === 0) {
+        showContent2();
+        step = 1;
+        setTimeout(() => (isAnimating = false), 1200); // 애니메이션 끝날 때까지 고정
+      } else if (step === 1) {
+        const nextSection = hero.nextElementSibling;
+        if (nextSection) {
+          setTimeout(() => {
+            nextSection.scrollIntoView({ behavior: "smooth" });
+            step = 2;
+            setTimeout(() => (isAnimating = false), 1000);
+          }, 300); // 약간 딜레이 후 넘어가기
+        } else {
+          isAnimating = false;
+        }
+      } else {
+        isAnimating = false;
+      }
+    } else if (e.deltaY < 0) { // 위로
+      if (step === 1) {
+        showContent1();
+        step = 0;
+        setTimeout(() => (isAnimating = false), 1200);
+      } else if (step === 2) {
+        const prevSection = hero.previousElementSibling;
+        if (prevSection) {
+          setTimeout(() => {
+            prevSection.scrollIntoView({ behavior: "smooth" });
+            step = 1; // 돌아왔을 때 content2 유지
+            setTimeout(() => (isAnimating = false), 1000);
+          }, 300);
+        } else {
+          isAnimating = false;
+        }
+      } else {
+        isAnimating = false;
+      }
     }
   }
+
+  // === 패럴랙스 효과 ===
+  let targetX = 0, targetY = 0;
+  let currentX = 0, currentY = 0;
+
+  function handleMouseMove(e) {
+    targetX = (e.clientX / window.innerWidth - 0.5) * 30; // -15px ~ +15px
+    targetY = (e.clientY / window.innerHeight - 0.5) * 30; // -15px ~ +15px
+  }
+
+  function animateParallax() {
+    // 보간 (lerp)으로 부드럽게 따라오기
+    currentX += (targetX - currentX) * 0.05;
+    currentY += (targetY - currentY) * 0.05;
+
+    bgItems.forEach((item, index) => {
+      const speed = (index + 1) * 0.3; // 레이어마다 속도 차이
+      item.style.transform = `translate(${currentX * speed}px, ${currentY * speed}px)`;
+    });
+
+    requestAnimationFrame(animateParallax);
+  }
+
+  window.addEventListener("wheel", handleScroll, { passive: false });
+  hero.addEventListener("mousemove", handleMouseMove);
+
+  animateParallax(); // 패럴랙스 루프 시작
 });
 
 
@@ -60,21 +140,165 @@ ScrollTrigger.create({
 
 
 
-// interest 이미지 보이기/숨기기
-const wrapper = document.querySelector('.right .img-wrapper');
-if (wrapper) {
-  window.addEventListener('scroll', () => {
-    const rect = wrapper.getBoundingClientRect();
-    const inView = rect.top < window.innerHeight * 0.75 && rect.bottom > window.innerHeight * 0.25;
-    if (inView) {
-      wrapper.classList.add('show');
-      wrapper.classList.remove('hide');
-    } else {
-      wrapper.classList.add('hide');
-      wrapper.classList.remove('show');
+
+
+
+// 05.프로필
+document.addEventListener("DOMContentLoaded", () => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  const profileSection = document.querySelector(".profile-info");
+
+  let tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: profileSection,
+      start: "top 80%",
+      end: "bottom top", // 섹션이 화면에서 벗어날 때까지
+      toggleActions: "play reverse play reverse", // 반복 가능
+      markers: false
     }
   });
-}
+
+  // 1단계: My Profile + 이미지
+  tl.from(".profile-info .en2", {
+    opacity: 0,
+    y: 40,
+    duration: 0.8,
+    ease: "power2.out"
+  })
+  .from(".profile-wrapper .profile-img", {
+    opacity: 0,
+    y: 40,
+    duration: 0.8,
+    ease: "power2.out"
+  }, "<"); // 동시에 실행
+
+  // 2단계: introduce (h2 + p)
+  tl.from(".profile-info .introduce > *", {
+    opacity: 0,
+    y: 40,
+    duration: 0.8,
+    stagger: 0.2,
+    ease: "power2.out"
+  });
+
+  // introduce가 등장할 때 labels 같이 나오기
+  tl.from(".profile-wrapper .label-name1, .profile-wrapper .label-name2, .profile-wrapper .label-name3, .profile-wrapper .download-link", {
+    opacity: 0,
+    y: 30,
+    duration: 0.6,
+    stagger: 0.15,
+    ease: "power2.out"
+  }, "<"); // introduce와 거의 동시에
+
+  // 3단계: detail
+  tl.from(".profile-info .detail", {
+    opacity: 0,
+    y: 40,
+    duration: 0.8,
+    ease: "power2.out"
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+// 06. interest
+document.addEventListener("DOMContentLoaded", () => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  const section = document.querySelector(".interest");
+  const wrapper = section.querySelector(".img-wrapper");
+  const searchbar = wrapper.querySelector(".searchbar");
+  const imgs = gsap.utils.toArray(".img-wrapper img");
+
+  const sbRect = searchbar.getBoundingClientRect();
+  const sbCx = sbRect.left + sbRect.width / 2;
+  const sbCy = sbRect.top + sbRect.height / 2;
+
+  imgs.forEach((img) => {
+    const r = img.getBoundingClientRect();
+    const wrapperRect = wrapper.getBoundingClientRect();
+
+    const imgW = r.width;
+    const imgH = r.height;
+
+    const targetX = r.left - wrapperRect.left;
+    const targetY = r.top - wrapperRect.top;
+
+    const startX = sbCx - wrapperRect.left - imgW / 2;
+    const startY = sbCy - wrapperRect.top - imgH / 2;
+
+    const offsetX = startX - targetX;
+    const offsetY = startY - targetY;
+
+    // 초기 상태 (searchbar에서 모여있음)
+    gsap.set(img, {
+      x: offsetX,
+      y: offsetY,
+      scale: 0.7,  // 🔥 크기 변화 폭 줄임 (0.25 → 0.7)
+      opacity: 0,
+      position: "absolute",
+      left: targetX,
+      top: targetY,
+      zIndex: 1,
+    });
+
+    // 등장 (searchbar → 자리)
+    gsap.to(img, {
+      x: 0,
+      y: 0,
+      scale: 1,
+      opacity: 1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: section,
+        start: "top center",
+        end: "center center",
+        scrub: true,
+      },
+    });
+
+    // 사라짐 (자리 → searchbar)
+    gsap.to(img, {
+      x: offsetX,
+      y: offsetY,
+      scale: 0.7,  // 🔥 줄어드는 크기도 0.7으로 맞춤
+      opacity: 0,
+      ease: "power2.in",
+      scrollTrigger: {
+        trigger: section,
+        start: "center center",
+        end: "bottom center",
+        scrub: true,
+      },
+    });
+  });
+
+  // 텍스트 순차 등장 (왼쪽 영역 h1, p)
+  gsap.from(".interest .left > *", {
+    opacity: 0,
+    y: 30,
+    duration: 0.8,
+    stagger: 0.2, // 🔥 순차적
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: section,
+      start: "top 80%",
+    },
+  });
+});
+
+
+
+
 
 // 텍스트 쪼개기 (Splitting과 별개로 br 포함)
 function splitTextWithLineBreaks(selector) {
@@ -156,7 +380,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 /* project-sliders.js : teamproject(1/2/3) 공통 슬라이더 */
-
 // DOM 준비되면 실행 (외부파일 안전)
 (function () {
   function initAll() {
@@ -320,28 +543,17 @@ gsap.timeline({
 
 
 
+// [ 스크립트 6 - con1 의 textAni 텍스트 체인지 gsap(쥐삽) 애니메이션 ]       
+let textAniList = document.querySelectorAll(".footer .textAni li");
+let textAni = new gsap.timeline({ repeat: -1 });
 
-
-
-
-// about-product 라인 이동
-ScrollTrigger.matchMedia({
-  "(min-width: 391px)": function () {
-    gsap.timeline({
-      scrollTrigger: {
-        trigger: '.about-product',
-        start: 'top center',
-        end:'35% center',
-        scrub: true
-      }
-    })
-    .to('.process-line .collection', { x:'-150px', ease: 'none' }, 0)
-    .to('.process-line .collection span', { x:'250px', ease: 'none' }, 0)
-  }
-});
-
-
-
+for (let i = 0; i < textAniList.length; i++) { // index를 지정하는 전통적인 for문 (그냥 외우도록)
+                                               // for 반복문에서 index 활용 참고 url -> https://learnjs.vlpt.us/basics/08-loop.html
+	textAni.to(textAniList[i], 0.8, { opacity: 1, repeat: 1, delay: 0, x: 0,  yoyo: true , ease: "power4.out"});
+    // ease 타이밍 참고 url -> https://greensock.com/docs/v3/Eases
+}
+textAni.play();    
+  
 
 
 // aboutMore.js
@@ -369,7 +581,7 @@ document.addEventListener("DOMContentLoaded", function () {
       start: "top 80%",
       end: "bottom 60%",
       scrub: 0.5,
-      markers: true
+      markers: falses
       }
     }
   );
