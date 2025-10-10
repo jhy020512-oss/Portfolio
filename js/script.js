@@ -581,7 +581,7 @@ document.addEventListener("DOMContentLoaded", function () {
       start: "top 80%",
       end: "bottom 60%",
       scrub: 0.5,
-      markers: falses
+      markers: false
       }
     }
   );
