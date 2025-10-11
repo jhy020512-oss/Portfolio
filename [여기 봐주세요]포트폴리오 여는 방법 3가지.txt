@@ -1,0 +1,7 @@
+[포트폴리오 여는 방법]
+
+1. index.html 파일 클릭
+
+2. "resume.pdf"클릭 후, 이력서 내 포트폴리오 링크 클릭
+
+3. https://jhy020512-oss.github.io/Portfolio/     <- 링크 검색
